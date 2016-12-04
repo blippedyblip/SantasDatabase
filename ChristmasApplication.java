@@ -176,6 +176,7 @@ public class ChristmasApplication
 				description = rsp.getString("description");
 				System.out.println(gid+": "+description);
 			}
+			System.out.println();
 		}
 		catch (SQLException sqlE)
 		{
@@ -209,12 +210,14 @@ public class ChristmasApplication
 				//if a new cid find name and address
 				if(newcid != currentcid)
 				{
+					System.out.println();
+					
 					PreparedStatement childQuery = conn.prepareStatement("SELECT name,address FROM Child WHERE cid = "+newcid+";");
 					ResultSet rsc = childQuery.executeQuery();
 					
 					rsc.next();
 					System.out.println("Child Name: "+rsc.getString("name"));
-					System.out.println("Child Address :"+rsc.getString("address"));
+					System.out.println("Child Address: "+rsc.getString("address"));
 					currentcid = newcid;
 				}
 				
@@ -225,6 +228,8 @@ public class ChristmasApplication
 				String description = rsg.getString("description");
 				System.out.println(gid+": "+description);
 			}
+			
+			System.out.println();
 		}
 		catch (SQLException sqlE)
 		{
